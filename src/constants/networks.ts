@@ -7,6 +7,7 @@ import BNB_LOGO_URL from '../assets/images/bnb-logo.svg'
 import BASE_LOGO_URL from '../assets/images/base-logo.svg'
 import { ChainId } from '@uniswap/sdk-core'
 import AVALANCHE_LOGO_URL from '../assets/images/avalanche-logo.png'
+import HYPEREVM_LOGO_URL from '../assets/images/hyper.svg'
 
 export enum SupportedNetwork {
   ETHEREUM,
@@ -17,6 +18,7 @@ export enum SupportedNetwork {
   BNB,
   BASE,
   AVALANCHE,
+  HYPEREVM,
 }
 
 export type NetworkInfo = {
@@ -117,13 +119,15 @@ export const AvalancheNetworkInfo: NetworkInfo = {
   imageURL: AVALANCHE_LOGO_URL,
 }
 
-export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
-  EthereumNetworkInfo,
-  PolygonNetworkInfo,
-  OptimismNetworkInfo,
-  ArbitrumNetworkInfo,
-  CeloNetworkInfo,
-  BNBNetworkInfo,
-  BaseNetworkInfo,
-  AvalancheNetworkInfo,
-]
+export const HypeNetworkInfo: NetworkInfo = {
+  chainId: 999,
+  id: SupportedNetwork.HYPEREVM,
+  route: 'hype',
+  name: 'Hype',
+  bgColor: '#093F34',
+  primaryColor: '#71E6CA',
+  secondaryColor: '#96B0AD',
+  imageURL: HYPEREVM_LOGO_URL,
+}
+
+export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [HypeNetworkInfo]

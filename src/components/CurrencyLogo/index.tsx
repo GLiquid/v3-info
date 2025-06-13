@@ -23,6 +23,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'smartchain'
     case ChainId.BASE:
       return 'base'
+    case ChainId.HYPEREVM:
+      return 'hyperevm'
     default:
       return 'ethereum'
   }
@@ -67,7 +69,7 @@ export default function CurrencyLogo({
   const celo = useCombinedActiveList()?.[42220]
   const bnbList = useCombinedActiveList()?.[ChainId.BNB]
   const baseList = useCombinedActiveList()?.[ChainId.BASE]
-
+  const hyperList = useCombinedActiveList()?.[999]
   const [activeNetwork] = useActiveNetworkVersion()
 
   const checkSummed = isAddress(address)
@@ -120,6 +122,14 @@ export default function CurrencyLogo({
   }, [checkSummed, celo])
   const uriLocationsCelo = useHttpLocations(celoURI)
 
+  const hyperURI = useMemo(() => {
+    if (checkSummed && hyperList?.[checkSummed]) {
+      return hyperList?.[checkSummed].token.logoURI
+    }
+    return undefined
+  }, [checkSummed, hyperList])
+  const uriLocationsHyper = useHttpLocations(hyperURI)
+
   //temp until token logo issue merged
   const tempSources: { [address: string]: string } = useMemo(() => {
     return {
@@ -141,6 +151,7 @@ export default function CurrencyLogo({
         ...uriLocationsCelo,
         ...uriLocationsBNB,
         ...uriLocationsBase,
+        ...uriLocationsHyper,
         override,
       ]
     }
@@ -155,6 +166,7 @@ export default function CurrencyLogo({
     uriLocationsCelo,
     uriLocationsBNB,
     uriLocationsBase,
+    uriLocationsHyper,
   ])
 
   if (activeNetwork === OptimismNetworkInfo && address === '0x4200000000000000000000000000000000000006') {

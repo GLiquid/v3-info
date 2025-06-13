@@ -74,6 +74,7 @@ export const initialState: TokensState = {
     [SupportedNetwork.BNB]: {},
     [SupportedNetwork.AVALANCHE]: {},
     [SupportedNetwork.BASE]: {},
+    [SupportedNetwork.HYPEREVM]: {},
   },
 }
 

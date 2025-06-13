@@ -358,7 +358,7 @@ const Search = ({ ...rest }: React.HTMLAttributes<HTMLDivElement>) => {
                         <TYPE.label ml="10px" style={{ whiteSpace: 'nowrap' }}>
                           <HoverInlineText maxCharacters={12} text={`${p.token0.symbol} / ${p.token1.symbol}`} />
                         </TYPE.label>
-                        <GreyBadge ml="10px">{feeTierPercent(p.feeTier)}</GreyBadge>
+                        <GreyBadge ml="10px">{feeTierPercent(p.fee)}</GreyBadge>
                         <SavedIcon
                           id="watchlist-icon"
                           size={'16px'}

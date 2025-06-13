@@ -161,7 +161,7 @@ function PoolPage({ address }: { address: string }) {
                 </StyledInternalLink>
                 <TYPE.main>{` > `}</TYPE.main>
                 <TYPE.label>{` ${poolData.token0.symbol} / ${poolData.token1.symbol} ${feeTierPercent(
-                  poolData.feeTier,
+                  poolData.fee,
                 )} `}</TYPE.label>
               </AutoRow>
               <RowFixed gap="10px" align="center">
@@ -180,7 +180,7 @@ function PoolPage({ address }: { address: string }) {
                     mr="8px"
                     fontSize="24px"
                   >{` ${poolData.token0.symbol} / ${poolData.token1.symbol} `}</TYPE.label>
-                  <GreyBadge>{feeTierPercent(poolData.feeTier)}</GreyBadge>
+                  <GreyBadge>{feeTierPercent(poolData.fee)}</GreyBadge>
                   {activeNetwork === EthereumNetworkInfo ? null : (
                     <GenericImageWrapper src={activeNetwork.imageURL} style={{ marginLeft: '8px' }} size={'26px'} />
                   )}
@@ -215,7 +215,7 @@ function PoolPage({ address }: { address: string }) {
               {activeNetwork !== EthereumNetworkInfo ? null : (
                 <RowFixed>
                   <StyledExternalLink
-                    href={`https://app.uniswap.org/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
+                    href={`https://app.uniswap.org/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.fee}`}
                   >
                     <ButtonGray width="170px" mr="12px" style={{ height: '44px' }}>
                       <RowBetween>
@@ -273,7 +273,7 @@ function PoolPage({ address }: { address: string }) {
                   <AutoColumn $gap="4px">
                     <TYPE.main fontWeight={400}>24h Fees</TYPE.main>
                     <TYPE.label fontSize="24px">
-                      {formatDollarAmount(poolData.volumeUSD * (poolData.feeTier / 1000000))}
+                      {formatDollarAmount(poolData.volumeUSD * (poolData.fee / 1000000))}
                     </TYPE.label>
                   </AutoColumn>
                 </AutoColumn>

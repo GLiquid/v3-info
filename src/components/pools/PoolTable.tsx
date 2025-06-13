@@ -59,7 +59,7 @@ const LinkWrapper = styled(Link)`
 `
 
 const SORT_FIELD = {
-  feeTier: 'feeTier',
+  fee: 'fee',
   volumeUSD: 'volumeUSD',
   tvlUSD: 'tvlUSD',
   volumeUSDWeek: 'volumeUSDWeek',
@@ -79,7 +79,7 @@ const DataRow = ({ poolData, index }: { poolData: PoolData; index: number }) => 
               {poolData.token0.symbol}/{poolData.token1.symbol}
             </TYPE.label>
             <GreyBadge ml="10px" fontSize="14px">
-              {feeTierPercent(poolData.feeTier)}
+              {feeTierPercent(poolData.fee)}
             </GreyBadge>
           </RowFixed>
         </Label>
@@ -162,8 +162,8 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
         <AutoColumn $gap="16px">
           <ResponsiveGrid>
             <Label color={theme?.text2}>#</Label>
-            <ClickableText color={theme?.text2} onClick={() => handleSort(SORT_FIELD.feeTier)}>
-              Pool {arrow(SORT_FIELD.feeTier)}
+            <ClickableText color={theme?.text2} onClick={() => handleSort(SORT_FIELD.fee)}>
+              Pool {arrow(SORT_FIELD.fee)}
             </ClickableText>
             <ClickableText color={theme?.text2} end={1} onClick={() => handleSort(SORT_FIELD.tvlUSD)}>
               TVL {arrow(SORT_FIELD.tvlUSD)}

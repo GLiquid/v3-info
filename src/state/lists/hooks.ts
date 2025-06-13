@@ -1,5 +1,5 @@
 import { UNSUPPORTED_LIST_URLS } from './../../constants/lists'
-import DEFAULT_TOKEN_LIST from '@uniswap/default-token-list'
+//import DEFAULT_TOKEN_LIST from '@uniswap/default-token-list'
 import { Tags, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
@@ -8,6 +8,7 @@ import sortByListPriority from 'utils/listSort'
 import UNSUPPORTED_TOKEN_LIST from '../../constants/tokenLists/uniswap-v2-unsupported.tokenlist.json'
 // import { useFetchListCallback } from 'hooks/useFetchListCallback'
 import { WrappedTokenInfo } from './wrappedTokenInfo'
+import HYPEREVM_TOKEN_LIST from '../../constants/tokenLists/hyper-evm.json'
 
 type TagDetails = Tags[keyof Tags]
 export interface TagInfo extends TagDetails {
@@ -44,10 +45,12 @@ function listToTokenMap(list: TokenList): TokenAddressMap {
     return tokenMap
   }, {}) as TokenAddressMap
   listCache?.set(list, map)
+
   return map
 }
 
-const TRANSFORMED_DEFAULT_TOKEN_LIST = listToTokenMap(DEFAULT_TOKEN_LIST)
+//const TRANSFORMED_DEFAULT_TOKEN_LIST = listToTokenMap(DEFAULT_TOKEN_LIST)
+const TRANSFORMED_HYPEREVM_TOKEN_LIST = listToTokenMap(HYPEREVM_TOKEN_LIST)
 
 export function useAllLists(): {
   readonly [url: string]: {
@@ -126,7 +129,7 @@ export function useInactiveListUrls(): string[] {
 export function useCombinedActiveList(): TokenAddressMap {
   const activeListUrls = useActiveListUrls()
   const activeTokens = useCombinedTokenMapFromUrls(activeListUrls)
-  return combineMaps(activeTokens, TRANSFORMED_DEFAULT_TOKEN_LIST)
+  return combineMaps(activeTokens, TRANSFORMED_HYPEREVM_TOKEN_LIST)
 }
 
 // all tokens from inactive lists

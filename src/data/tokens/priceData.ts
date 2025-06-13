@@ -15,7 +15,7 @@ export const PRICES_BY_BLOCK = (tokenAddress: string, blocks: any) => {
   queryString += blocks.map(
     (block: any) => `
       t${block.timestamp}:token(id:"${tokenAddress}", block: { number: ${block.number} }, subgraphError: allow) { 
-        derivedETH
+        derivedMatic
       }
     `,
   )
@@ -23,7 +23,7 @@ export const PRICES_BY_BLOCK = (tokenAddress: string, blocks: any) => {
   queryString += blocks.map(
     (block: any) => `
       b${block.timestamp}: bundle(id:"1", block: { number: ${block.number} }, subgraphError: allow) { 
-        ethPriceUSD
+        maticPriceUSD
       }
     `,
   )

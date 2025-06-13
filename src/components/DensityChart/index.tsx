@@ -91,7 +91,7 @@ export default function DensityChart({ address }: DensityChartProps) {
   const poolData: PoolData = usePoolDatas([address])[0]
   const formattedAddress0 = isAddress(poolData.token0.address)
   const formattedAddress1 = isAddress(poolData.token1.address)
-  const feeTier = poolData?.feeTier
+  const fee = poolData?.fee
 
   // parsed tokens
   const token0 = useMemo(() => {
@@ -133,7 +133,7 @@ export default function DensityChart({ address }: DensityChartProps) {
           poolTickData.ticksProcessed.map(async (t: TickProcessed, i) => {
             const active = t.tickIdx === poolTickData.activeTickIdx
             const sqrtPriceX96 = TickMath.getSqrtRatioAtTick(t.tickIdx)
-            const feeAmount: FeeAmount = poolData.feeTier
+            const feeAmount: FeeAmount = poolData.fee
             const mockTicks = [
               {
                 index: t.tickIdx - TICK_SPACINGS[feeAmount],
@@ -147,8 +147,8 @@ export default function DensityChart({ address }: DensityChartProps) {
               },
             ]
             const pool =
-              token0 && token1 && feeTier
-                ? new Pool(token0, token1, feeTier, sqrtPriceX96, t.liquidityActive, t.tickIdx, mockTicks)
+              token0 && token1 && fee
+                ? new Pool(token0, token1, fee, sqrtPriceX96, t.liquidityActive, t.tickIdx, mockTicks)
                 : undefined
             const nextSqrtX96 = poolTickData.ticksProcessed[i - 1]
               ? TickMath.getSqrtRatioAtTick(poolTickData.ticksProcessed[i - 1].tickIdx)
@@ -195,7 +195,7 @@ export default function DensityChart({ address }: DensityChartProps) {
     if (!formattedData) {
       formatData()
     }
-  }, [feeTier, formattedData, loading, poolData.feeTier, poolTickData, token0, token1])
+  }, [fee, formattedData, loading, poolData.fee, poolTickData, token0, token1])
 
   const atZoomMax = zoomState.left + ZOOM_INTERVAL >= zoomState.right - ZOOM_INTERVAL - 1
   const atZoomMin = zoomState.left - ZOOM_INTERVAL < 0

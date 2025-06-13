@@ -25,7 +25,7 @@ const POOL_CHART = gql`
       tvlUSD
       feesUSD
       pool {
-        feeTier
+        fee
       }
     }
   }
@@ -38,7 +38,7 @@ interface ChartResults {
     tvlUSD: string
     feesUSD: string
     pool: {
-      feeTier: string
+      fee: string
     }
   }[]
 }
@@ -50,7 +50,7 @@ export async function fetchPoolChartData(address: string, client: ApolloClient<N
     tvlUSD: string
     feesUSD: string
     pool: {
-      feeTier: string
+      fee: string
     }
   }[] = []
   const startTimestamp = 1619170975
@@ -92,7 +92,7 @@ export async function fetchPoolChartData(address: string, client: ApolloClient<N
   if (data) {
     const formattedExisting = data.reduce((accum: { [date: number]: PoolChartEntry }, dayData) => {
       const roundedDate = parseInt((dayData.date / ONE_DAY_UNIX).toFixed(0))
-      const feePercent = parseFloat(dayData.pool.feeTier) / 10000
+      const feePercent = parseFloat(dayData.pool.fee) / 10000
       const tvlAdjust = dayData?.volumeUSD ? parseFloat(dayData.volumeUSD) * feePercent : 0
 
       accum[roundedDate] = {

@@ -6,7 +6,7 @@ import weekOfYear from 'dayjs/plugin/weekOfYear'
 import gql from 'graphql-tag'
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 import { useActiveNetworkVersion, useClients } from 'state/application/hooks'
-import { arbitrumClient, optimismClient } from 'apollo/client'
+import { optimismClient } from 'apollo/client'
 import { SupportedNetwork } from 'constants/networks'
 import { useDerivedProtocolTVLHistory } from './derived'
 
@@ -16,8 +16,8 @@ dayjs.extend(weekOfYear)
 const ONE_DAY_UNIX = 24 * 60 * 60
 
 const GLOBAL_CHART = gql`
-  query uniswapDayDatas($startTime: Int!, $skip: Int!) {
-    uniswapDayDatas(
+  query algebraDayDatas($startTime: Int!, $skip: Int!) {
+    algebraDayDatas(
       first: 1000
       skip: $skip
       subgraphError: allow
@@ -34,7 +34,7 @@ const GLOBAL_CHART = gql`
 `
 
 interface ChartResults {
-  uniswapDayDatas: {
+  algebraDayDatas: {
     date: number
     volumeUSD: string
     tvlUSD: string
@@ -47,7 +47,8 @@ async function fetchChartData(client: ApolloClient<NormalizedCacheObject>) {
     volumeUSD: string
     tvlUSD: string
   }[] = []
-  const startTimestamp = client === arbitrumClient ? 1630423606 : client === optimismClient ? 1636697130 : 1619170975
+  const startTimestamp = 1717795200
+
   const endTimestamp = dayjs.utc().unix()
 
   let error = false
@@ -70,11 +71,11 @@ async function fetchChartData(client: ApolloClient<NormalizedCacheObject>) {
       })
       if (!loading) {
         skip += 1000
-        if (chartResData.uniswapDayDatas.length < 1000 || error) {
+        if (chartResData.algebraDayDatas.length < 1000 || error) {
           allFound = true
         }
         if (chartResData) {
-          data = data.concat(chartResData.uniswapDayDatas)
+          data = data.concat(chartResData.algebraDayDatas)
         }
       }
     }

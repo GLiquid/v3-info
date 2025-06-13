@@ -20,7 +20,7 @@ export const POOLS_BULK = (block: number | undefined, pools: string[]) => {
     (block ? `block: {number: ${block}} ,` : ``) +
     ` orderBy: totalValueLockedUSD, orderDirection: desc, subgraphError: allow) {
         id
-        feeTier
+        fee
         liquidity
         sqrtPrice
         tick
@@ -29,14 +29,14 @@ export const POOLS_BULK = (block: number | undefined, pools: string[]) => {
             symbol 
             name
             decimals
-            derivedETH
+            derivedMatic
         }
         token1 {
             id
             symbol 
             name
             decimals
-            derivedETH
+            derivedMatic
         }
         token0Price
         token1Price
@@ -49,7 +49,7 @@ export const POOLS_BULK = (block: number | undefined, pools: string[]) => {
         totalValueLockedUSD
       }
       bundles (where: {id: "1"}) {
-        ethPriceUSD
+        maticPriceUSD
       }
     }
     `
@@ -58,7 +58,7 @@ export const POOLS_BULK = (block: number | undefined, pools: string[]) => {
 
 interface PoolFields {
   id: string
-  feeTier: string
+  fee: string
   liquidity: string
   sqrtPrice: string
   tick: string
@@ -67,14 +67,14 @@ interface PoolFields {
     symbol: string
     name: string
     decimals: string
-    derivedETH: string
+    derivedMatic: string
   }
   token1: {
     id: string
     symbol: string
     name: string
     decimals: string
-    derivedETH: string
+    derivedMatic: string
   }
   token0Price: string
   token1Price: string
@@ -90,7 +90,7 @@ interface PoolFields {
 interface PoolDataResponse {
   pools: PoolFields[]
   bundles: {
-    ethPriceUSD: string
+    maticPriceUSD: string
   }[]
 }
 
@@ -147,7 +147,7 @@ export function usePoolDatas(poolAddresses: string[]): {
     }
   }
 
-  const ethPriceUSD = data?.bundles?.[0]?.ethPriceUSD ? parseFloat(data?.bundles?.[0]?.ethPriceUSD) : 0
+  const ethPriceUSD = data?.bundles?.[0]?.maticPriceUSD ? parseFloat(data?.bundles?.[0]?.maticPriceUSD) : 0
 
   const parsed = data?.pools
     ? data.pools.reduce((accum: { [address: string]: PoolFields }, poolData) => {
@@ -201,7 +201,7 @@ export function usePoolDatas(poolAddresses: string[]): {
      * During subgraph deploy switch this month we lost logic to fix this accounting.
      * Grafted sync pending fix now.
      */
-    const feePercent = current ? parseFloat(current.feeTier) / 10000 / 100 : 0
+    const feePercent = current ? parseFloat(current.fee) / 10000 / 100 : 0
     const tvlAdjust0 = current?.volumeToken0 ? (parseFloat(current.volumeToken0) * feePercent) / 2 : 0
     const tvlAdjust1 = current?.volumeToken1 ? (parseFloat(current.volumeToken1) * feePercent) / 2 : 0
     const tvlToken0 = current ? parseFloat(current.totalValueLockedToken0) - tvlAdjust0 : 0
@@ -217,19 +217,19 @@ export function usePoolDatas(poolAddresses: string[]): {
 
     // Part of TVL fix
     const tvlUpdated = current
-      ? tvlToken0 * parseFloat(current.token0.derivedETH) * ethPriceUSD +
-        tvlToken1 * parseFloat(current.token1.derivedETH) * ethPriceUSD
+      ? tvlToken0 * parseFloat(current.token0.derivedMatic) * ethPriceUSD +
+        tvlToken1 * parseFloat(current.token1.derivedMatic) * ethPriceUSD
       : undefined
     if (tvlUpdated) {
       tvlUSD = tvlUpdated
     }
 
-    const feeTier = current ? parseInt(current.feeTier) : 0
+    const fee = current ? parseInt(current.fee) : 0
 
     if (current) {
       accum[address] = {
         address,
-        feeTier,
+        fee,
         liquidity: parseFloat(current.liquidity),
         sqrtPrice: parseFloat(current.sqrtPrice),
         tick: parseFloat(current.tick),
@@ -238,14 +238,14 @@ export function usePoolDatas(poolAddresses: string[]): {
           name: formatTokenName(current.token0.id, current.token0.name, activeNetwork),
           symbol: formatTokenSymbol(current.token0.id, current.token0.symbol, activeNetwork),
           decimals: parseInt(current.token0.decimals),
-          derivedETH: parseFloat(current.token0.derivedETH),
+          derivedMatic: parseFloat(current.token0.derivedMatic),
         },
         token1: {
           address: current.token1.id,
           name: formatTokenName(current.token1.id, current.token1.name, activeNetwork),
           symbol: formatTokenSymbol(current.token1.id, current.token1.symbol, activeNetwork),
           decimals: parseInt(current.token1.decimals),
-          derivedETH: parseFloat(current.token1.derivedETH),
+          derivedMatic: parseFloat(current.token1.derivedMatic),
         },
         token0Price: parseFloat(current.token0Price),
         token1Price: parseFloat(current.token1Price),

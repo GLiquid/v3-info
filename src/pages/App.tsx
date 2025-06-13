@@ -15,8 +15,8 @@ import PoolPage from './Pool/PoolPage'
 import { ExternalLink, TYPE } from 'theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from 'state/application/hooks'
 import { DarkGreyCard } from 'components/Card'
-import { SUPPORTED_NETWORK_VERSIONS, EthereumNetworkInfo, OptimismNetworkInfo } from 'constants/networks'
-import { Link } from 'rebass'
+import { SUPPORTED_NETWORK_VERSIONS, HypeNetworkInfo, OptimismNetworkInfo } from 'constants/networks'
+//import { Link } from 'rebass'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -82,20 +82,20 @@ const WarningBanner = styled.div`
   font-weight: 500;
 `
 
-const UrlBanner = styled.div`
-  background-color: ${({ theme }) => theme.pink1};
-  padding: 1rem 0.75rem;
-  color: white;
-  font-size: 14px;
-  width: 100%;
-  text-align: center;
-  font-weight: 500;
-`
+// const UrlBanner = styled.div`
+//   background-color: ${({ theme }) => theme.pink1};
+//   padding: 1rem 0.75rem;
+//   color: white;
+//   font-size: 14px;
+//   width: 100%;
+//   text-align: center;
+//   font-weight: 500;
+// `
 
-const Decorator = styled.span`
-  text-decoration: underline;
-  color: white;
-`
+// const Decorator = styled.span`
+//   text-decoration: underline;
+//   color: white;
+// `
 
 const BLOCK_DIFFERENCE_THRESHOLD = 30
 
@@ -112,7 +112,7 @@ export default function App() {
   const [activeNetwork, setActiveNetwork] = useActiveNetworkVersion()
   useEffect(() => {
     if (location.pathname === '/') {
-      setActiveNetwork(EthereumNetworkInfo)
+      setActiveNetwork(HypeNetworkInfo)
     } else {
       SUPPORTED_NETWORK_VERSIONS.map((n) => {
         if (location.pathname.includes(n.route.toLocaleLowerCase())) {
@@ -148,12 +148,12 @@ export default function App() {
               </BannerWrapper>
             )}
             <BannerWrapper>
-              <UrlBanner>
+              {/* <UrlBanner>
                 {`info.uniswap.org is being deprecated on June 11th. Explore the new combined V2 and V3 analytics at `}
                 <Link href={'https://app.uniswap.org/explore'}>
                   <Decorator>app.uniswap.org</Decorator>
                 </Link>
-              </UrlBanner>
+              </UrlBanner> */}
             </BannerWrapper>
             <Hide1080>
               <TopBar />

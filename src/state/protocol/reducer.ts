@@ -41,6 +41,7 @@ const DEFAULT_INITIAL_STATE = {
 }
 
 export const initialState: ProtocolState = {
+  [SupportedNetwork.HYPEREVM]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.ETHEREUM]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.ARBITRUM]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.OPTIMISM]: DEFAULT_INITIAL_STATE,

@@ -150,6 +150,8 @@ export function useDataClient(): ApolloClient<NormalizedCacheObject> {
       return avalancheClient
     case SupportedNetwork.BASE:
       return baseClient
+    case SupportedNetwork.HYPEREVM:
+      return client
     default:
       return client
   }

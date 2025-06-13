@@ -45,7 +45,7 @@ export const POOL_SEARCH = gql`
   query pools($tokens: [Bytes]!, $id: String) {
     as0: pools(where: { token0_in: $tokens }, subgraphError: allow) {
       id
-      feeTier
+      fee
       token0 {
         id
         symbol
@@ -59,7 +59,7 @@ export const POOL_SEARCH = gql`
     }
     as1: pools(where: { token1_in: $tokens }, subgraphError: allow) {
       id
-      feeTier
+      fee
       token0 {
         id
         symbol
@@ -73,7 +73,7 @@ export const POOL_SEARCH = gql`
     }
     asAddress: pools(where: { id: $id }, subgraphError: allow) {
       id
-      feeTier
+      fee
       token0 {
         id
         symbol
@@ -111,7 +111,7 @@ interface TokenRes {
 
 interface PoolResFields {
   id: string
-  feeTier: string
+  fee: string
   token0: {
     id: string
     symbol: string

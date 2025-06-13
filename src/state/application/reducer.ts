@@ -10,7 +10,7 @@ import {
   setOpenModal,
   updateActiveNetworkVersion,
 } from './actions'
-import { EthereumNetworkInfo } from '../../constants/networks'
+import { HypeNetworkInfo } from '../../constants/networks'
 
 type PopupList = Array<{ key: string; show: boolean; content: PopupContent; removeAfterMs: number | null }>
 
@@ -35,7 +35,7 @@ const initialState: ApplicationState = {
     syncedBlock: undefined,
     headBlock: undefined,
   },
-  activeNetworkVersion: EthereumNetworkInfo,
+  activeNetworkVersion: HypeNetworkInfo,
 }
 
 export default createReducer(initialState, (builder) =>

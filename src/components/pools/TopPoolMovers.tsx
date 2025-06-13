@@ -38,7 +38,7 @@ const DataCard = ({ poolData }: { poolData: PoolData }) => {
               <HoverInlineText maxCharacters={10} text={`${poolData.token0.symbol}/${poolData.token1.symbol}`} />
             </TYPE.label>
             <GreyBadge ml="10px" fontSize="12px">
-              {feeTierPercent(poolData.feeTier)}
+              {feeTierPercent(poolData.fee)}
             </GreyBadge>
           </RowFixed>
           <RowFixed>

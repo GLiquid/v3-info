@@ -39,7 +39,7 @@ const TopBar = () => {
             ) : activeNetwork.id === SupportedNetwork.AVALANCHE ? (
               <Item>AVAX Price:</Item>
             ) : (
-              <Item>Eth Price:</Item>
+              <Item>HYPE Price:</Item>
             )}
             <Item fontWeight="700" ml="4px">
               {formatDollarAmount(ethPrices?.current)}
@@ -47,9 +47,9 @@ const TopBar = () => {
           </RowFixed>
         </AutoRow>
         <AutoRow $gap="6px" style={{ justifyContent: 'flex-end' }}>
-          <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink>
-          <StyledLink href="https://docs.uniswap.org/">Docs</StyledLink>
-          <StyledLink href="https://app.uniswap.org/#/swap">App</StyledLink>
+          {/* <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink> */}
+          <StyledLink href="https://gliquids-organization.gitbook.io/gliquid">Docs</StyledLink>
+          <StyledLink href="https://www.gliquid.xyz/swap">App</StyledLink>
         </AutoRow>
       </RowBetween>
     </Wrapper>

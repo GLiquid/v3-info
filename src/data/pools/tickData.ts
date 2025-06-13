@@ -7,8 +7,8 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 
 const PRICE_FIXED_DIGITS = 4
 const DEFAULT_SURROUNDING_TICKS = 300
-const FEE_TIER_TO_TICK_SPACING = (feeTier: string): number => {
-  switch (feeTier) {
+const FEE_TIER_TO_TICK_SPACING = (fee: string): number => {
+  switch (fee) {
     case '10000':
       return 200
     case '3000':
@@ -18,13 +18,13 @@ const FEE_TIER_TO_TICK_SPACING = (feeTier: string): number => {
     case '100':
       return 1
     default:
-      throw Error(`Tick spacing for fee tier ${feeTier} undefined.`)
+      throw Error(`Tick spacing for fee tier ${fee} undefined.`)
   }
 }
 
 interface TickPool {
   tick: string
-  feeTier: string
+  fee: string
   token0: {
     symbol: string
     id: string
@@ -129,7 +129,7 @@ const fetchInitializedTicks = async (
 
 export interface PoolTickData {
   ticksProcessed: TickProcessed[]
-  feeTier: string
+  fee: string
   tickSpacing: number
   activeTickIdx: number
 }
@@ -148,7 +148,7 @@ const poolQuery = gql`
         id
         decimals
       }
-      feeTier
+      fee
       sqrtPrice
       liquidity
     }
@@ -186,7 +186,7 @@ export const fetchTicksSurroundingPrice = async (
   const {
     pool: {
       tick: poolCurrentTick,
-      feeTier,
+      fee,
       liquidity,
       token0: { id: token0Address, decimals: token0Decimals },
       token1: { id: token1Address, decimals: token1Decimals },
@@ -194,7 +194,7 @@ export const fetchTicksSurroundingPrice = async (
   } = poolResult
 
   const poolCurrentTickIdx = parseInt(poolCurrentTick)
-  const tickSpacing = FEE_TIER_TO_TICK_SPACING(feeTier)
+  const tickSpacing = FEE_TIER_TO_TICK_SPACING(fee)
 
   // The pools current tick isn't necessarily a tick that can actually be initialized.
   // Find the nearest valid tick given the tick spacing.
@@ -345,7 +345,7 @@ export const fetchTicksSurroundingPrice = async (
   return {
     data: {
       ticksProcessed,
-      feeTier,
+      fee,
       tickSpacing,
       activeTickIdx,
     },
