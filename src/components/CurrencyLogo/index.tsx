@@ -30,11 +30,11 @@ export function chainIdToNetworkName(networkId: ChainId) {
   }
 }
 
-const getTokenLogoURL = ({ address, chainId }: { address: string; chainId: ChainId }) => {
-  return `https://raw.githubusercontent.com/uniswap/assets/master/blockchains/${chainIdToNetworkName(
-    chainId,
-  )}/assets/${address}/logo.png`
-}
+// const getTokenLogoURL = ({ address, chainId }: { address: string; chainId: ChainId }) => {
+//   return `https://raw.githubusercontent.com/uniswap/assets/master/blockchains/${chainIdToNetworkName(
+//     chainId,
+//   )}/assets/${address}/logo.png`
+// }
 
 const StyledLogo = styled(Logo)<{ size: string }>`
   width: ${({ size }) => size};
@@ -144,7 +144,7 @@ export default function CurrencyLogo({
     if (checkSummed && address) {
       const override = tempSources[address]
       return [
-        getTokenLogoURL({ address: checkSummed, chainId: activeNetwork.chainId }),
+        // getTokenLogoURL({ address: checkSummed, chainId: activeNetwork.chainId }),
         ...uriLocationsOptimism,
         ...uriLocationsArbitrum,
         ...uriLocationsPolygon,
