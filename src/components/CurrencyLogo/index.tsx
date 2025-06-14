@@ -9,7 +9,7 @@ import { OptimismNetworkInfo } from 'constants/networks'
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import { ChainId } from '@uniswap/sdk-core'
 
-export function chainIdToNetworkName(networkId: ChainId) {
+export function chainIdToNetworkName(networkId: ChainId | number) {
   switch (networkId) {
     case ChainId.MAINNET:
       return 'ethereum'

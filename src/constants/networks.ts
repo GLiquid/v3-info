@@ -22,7 +22,7 @@ export enum SupportedNetwork {
 }
 
 export type NetworkInfo = {
-  chainId: ChainId
+  chainId: ChainId | number
   id: SupportedNetwork
   route: string
   name: string
