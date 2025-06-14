@@ -120,7 +120,7 @@ export const AvalancheNetworkInfo: NetworkInfo = {
 }
 
 export const HypeNetworkInfo: NetworkInfo = {
-  chainId: 999,
+  chainId: 999 as ChainId,
   id: SupportedNetwork.HYPEREVM,
   route: 'hype',
   name: 'Hype',
