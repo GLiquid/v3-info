@@ -85,7 +85,7 @@ export function useFetchedSubgraphStatus(): {
     const syncedBlock = parseInt(data._meta.block.number)
 
     const available = head - syncedBlock < 10
-    debugger
+
     setHealth({
       available: available,
       syncedBlock: syncedBlock,
