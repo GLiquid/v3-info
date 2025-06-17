@@ -5,7 +5,7 @@ import { TYPE, ExternalLink } from '../../theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from '../../state/application/hooks'
 import { ExplorerDataType, getExplorerLink } from '../../utils'
 import useTheme from 'hooks/useTheme'
-import { EthereumNetworkInfo } from 'constants/networks'
+import { EthereumNetworkInfo, HypeNetworkInfo } from 'constants/networks'
 
 const StyledPolling = styled.div`
   display: flex;
@@ -85,7 +85,9 @@ export default function Polling() {
   )
 
   return (
-    <ExternalLink href={latestBlock ? getExplorerLink(999, latestBlock.toString(), ExplorerDataType.BLOCK) : ''}>
+    <ExternalLink
+      href={latestBlock ? getExplorerLink(HypeNetworkInfo.chainId, latestBlock.toString(), ExplorerDataType.BLOCK) : ''}
+    >
       <StyledPolling>
         <TYPE.small mr="4px" color={theme?.text3}>
           Latest synced block:{' '}

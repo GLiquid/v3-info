@@ -14,7 +14,7 @@ import { PageButtons, Arrow, Break } from 'components/shared'
 import useTheme from 'hooks/useTheme'
 import HoverInlineText from 'components/HoverInlineText'
 import { useActiveNetworkVersion } from 'state/application/hooks'
-import { OptimismNetworkInfo } from 'constants/networks'
+import { HypeNetworkInfo, OptimismNetworkInfo } from 'constants/networks'
 //import { ChainId } from '@uniswap/sdk-core'
 
 const Wrapper = styled(DarkGreyCard)`
@@ -98,7 +98,7 @@ const DataRow = ({ transaction, color }: { transaction: Transaction; color?: str
 
   return (
     <ResponsiveGrid>
-      <ExternalLink href={getExplorerLink(999, transaction.hash, ExplorerDataType.TRANSACTION)}>
+      <ExternalLink href={getExplorerLink(HypeNetworkInfo.chainId, transaction.hash, ExplorerDataType.TRANSACTION)}>
         <Label color={color ?? theme?.blue1} fontWeight={400}>
           {transaction.type === TransactionType.MINT
             ? `Add ${transaction.token0Symbol} and ${transaction.token1Symbol}`
@@ -118,7 +118,7 @@ const DataRow = ({ transaction, color }: { transaction: Transaction; color?: str
       </Label>
       <Label end={1} fontWeight={400}>
         <ExternalLink
-          href={getExplorerLink(999, transaction.sender, ExplorerDataType.ADDRESS)}
+          href={getExplorerLink(HypeNetworkInfo.chainId, transaction.sender, ExplorerDataType.ADDRESS)}
           style={{ color: color ?? theme?.blue1 }}
         >
           {shortenAddress(transaction.sender)}
