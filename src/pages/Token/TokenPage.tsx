@@ -36,13 +36,12 @@ import { MonoSpace } from 'components/shared'
 import dayjs from 'dayjs'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo } from 'constants/networks'
+import { EthereumNetworkInfo, HypeNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { useCMCLink } from 'hooks/useCMCLink'
 import CMCLogo from '../../assets/images/cmc.png'
 import { useParams } from 'react-router-dom'
 import { Trace } from '@uniswap/analytics'
-import { ChainId } from '@uniswap/sdk-core'
 
 const PriceText = styled(TYPE.label)`
   font-size: 36px;
@@ -191,7 +190,7 @@ export default function TokenPage() {
                     <TYPE.main>{` > `}</TYPE.main>
                     <TYPE.label>{` ${tokenData.symbol} `}</TYPE.label>
                     <StyledExternalLink
-                      href={getExplorerLink(ChainId.MAINNET, formattedAddress, ExplorerDataType.ADDRESS)}
+                      href={getExplorerLink(HypeNetworkInfo.chainId, formattedAddress, ExplorerDataType.ADDRESS)}
                     >
                       <TYPE.main>{` (${shortenAddress(formattedAddress)}) `}</TYPE.main>
                     </StyledExternalLink>
@@ -207,7 +206,7 @@ export default function TokenPage() {
                       </StyledExternalLink>
                     )}
                     <StyledExternalLink
-                      href={getExplorerLink(ChainId.MAINNET, formattedAddress, ExplorerDataType.ADDRESS)}
+                      href={getExplorerLink(HypeNetworkInfo.chainId, formattedAddress, ExplorerDataType.ADDRESS)}
                     >
                       <ExternalLink stroke={theme?.text2} size={'17px'} style={{ marginLeft: '12px' }} />
                     </StyledExternalLink>

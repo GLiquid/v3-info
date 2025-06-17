@@ -1,37 +1,45 @@
-import { useActiveNetworkVersion } from 'state/application/hooks'
+//import { useActiveNetworkVersion } from 'state/application/hooks'
 import { healthClient } from './../../apollo/client'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
-import { ArbitrumNetworkInfo, EthereumNetworkInfo } from 'constants/networks'
+import { JsonRpcProvider } from '@ethersproject/providers'
+import { useEffect, useState } from 'react'
+//import { ArbitrumNetworkInfo, EthereumNetworkInfo } from 'constants/networks'
 
-export const SUBGRAPH_HEALTH = gql`
-  query health($name: Bytes) {
-    indexingStatusForCurrentVersion(subgraphName: $name, subgraphError: allow) {
-      synced
-      health
-      chains {
-        chainHeadBlock {
-          number
-        }
-        latestBlock {
-          number
-        }
+// export const SUBGRAPH_HEALTH = gql`
+//   query health($name: Bytes) {
+//     indexingStatusForCurrentVersion(subgraphName: $name, subgraphError: allow) {
+//       synced
+//       health
+//       chains {
+//         chainHeadBlock {
+//           number
+//         }
+//         latestBlock {
+//           number
+//         }
+//       }
+//     }
+//   }
+// `
+
+const META = gql`
+  {
+    _meta {
+      block {
+        number
       }
+      hasIndexingErrors
     }
   }
 `
 
 interface HealthResponse {
-  indexingStatusForCurrentVersion: {
-    chains: {
-      chainHeadBlock: {
-        number: string
-      }
-      latestBlock: {
-        number: string
-      }
-    }[]
-    synced: boolean
+  _meta: {
+    block: {
+      number: string
+    }
+    hasIndexingErrors: boolean
   }
 }
 
@@ -43,45 +51,59 @@ export function useFetchedSubgraphStatus(): {
   syncedBlock: number | undefined
   headBlock: number | undefined
 } {
-  const [activeNetwork] = useActiveNetworkVersion()
+  //const [activeNetwork] = useActiveNetworkVersion()
 
-  const { loading, error, data } = useQuery<HealthResponse>(SUBGRAPH_HEALTH, {
-    client: healthClient,
-    fetchPolicy: 'network-only',
-    variables: {
-      name:
-        activeNetwork === EthereumNetworkInfo
-          ? 'uniswap/uniswap-v3'
-          : activeNetwork === ArbitrumNetworkInfo
-          ? 'ianlapham/uniswap-arbitrum-one'
-          : 'ianlapham/uniswap-optimism',
-    },
+  const [health, setHealth] = useState<{
+    available: boolean | null
+    syncedBlock: number | undefined
+    headBlock: number | undefined
+  }>({
+    available: null,
+    syncedBlock: undefined,
+    headBlock: undefined,
   })
 
-  const parsed = data?.indexingStatusForCurrentVersion
+  const { loading, error, data } = useQuery<HealthResponse>(META, {
+    client: healthClient,
+    fetchPolicy: 'network-only',
+    // variables: {
+    //   name:
+    //     activeNetwork === EthereumNetworkInfo
+    //       ? 'uniswap/uniswap-v3'
+    //       : activeNetwork === ArbitrumNetworkInfo
+    //       ? 'ianlapham/uniswap-arbitrum-one'
+    //       : 'ianlapham/uniswap-optimism',
+    // },
+  })
+  const provider = new JsonRpcProvider('https://rpc.hyperliquid.xyz/evm')
 
-  if (loading) {
-    return {
-      available: null,
-      syncedBlock: undefined,
-      headBlock: undefined,
+  //const parsed = data?.indexingStatusForCurrentVersion
+
+  const getHealth = async () => {
+    if (!data) return
+    const head = await provider.getBlockNumber()
+    const syncedBlock = parseInt(data._meta.block.number)
+
+    const available = head - syncedBlock < 10
+
+    setHealth({
+      available: available,
+      syncedBlock: syncedBlock,
+      headBlock: head,
+    })
+  }
+
+  useEffect(() => {
+    if (loading) {
+      setHealth({
+        available: null,
+        syncedBlock: undefined,
+        headBlock: undefined,
+      })
+    } else {
+      getHealth()
     }
-  }
+  }, [loading, error, data])
 
-  if ((!loading && !parsed) || error) {
-    return {
-      available: false,
-      syncedBlock: undefined,
-      headBlock: undefined,
-    }
-  }
-
-  const syncedBlock = parsed?.chains[0].latestBlock.number
-  const headBlock = parsed?.chains[0].chainHeadBlock.number
-
-  return {
-    available: true,
-    syncedBlock: syncedBlock ? parseFloat(syncedBlock) : undefined,
-    headBlock: headBlock ? parseFloat(headBlock) : undefined,
-  }
+  return health
 }
