@@ -41,6 +41,15 @@
       "tags": ["tokenv1"]
     },
     {
+      "name": "Hyper USD",
+      "decimals": 18,
+      "symbol": "USDHL",
+      "address": "0xb50A96253aBDF803D85efcDce07Ad8becBc52BD5",
+      "chainId": 999,
+      "logoURI": "https://assets.coingecko.com/coins/images/66679/standard/usdhl.jpg?1750242294",
+      "tags": ["tokenv1", "stablecoin"]
+    },
+    {
       "name": "pre Gliquid",
       "decimals": 18,
       "symbol": "pGLQ",
