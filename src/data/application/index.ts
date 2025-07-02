@@ -75,7 +75,9 @@ export function useFetchedSubgraphStatus(): {
     //       : 'ianlapham/uniswap-optimism',
     // },
   })
-  const provider = new JsonRpcProvider('https://rpc.hyperliquid.xyz/evm')
+  const provider = new JsonRpcProvider(
+    'https://side-practical-friday.hype-mainnet.quiknode.pro/13773fcd6866c96900c57cd5209d14529a5a670e/evm',
+  )
 
   //const parsed = data?.indexingStatusForCurrentVersion
 

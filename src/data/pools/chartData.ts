@@ -62,6 +62,7 @@ export async function fetchPoolChartData(address: string, client: ApolloClient<N
 
   try {
     while (!allFound) {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
       const {
         data: chartResData,
         error,

@@ -50,6 +50,7 @@ export async function fetchTokenChartData(address: string, client: ApolloClient<
 
   try {
     while (!allFound) {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
       const {
         data: chartResData,
         error,

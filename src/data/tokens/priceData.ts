@@ -119,6 +119,7 @@ export async function fetchTokenPriceData(
     let skip = 0
     let allFound = false
     while (!allFound) {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
       const {
         data: priceData,
         errors,
