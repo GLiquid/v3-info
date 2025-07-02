@@ -21,6 +21,7 @@ export async function splitQuery<Type extends object>(
   let skip = 0
   try {
     while (!allFound) {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
       let end = values.length
       if (skip + skipCount < values.length) {
         end = skip + skipCount

@@ -57,6 +57,7 @@ async function fetchChartData(client: ApolloClient<NormalizedCacheObject>) {
 
   try {
     while (!allFound) {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
       const {
         data: chartResData,
         error,
