@@ -37,6 +37,7 @@ export function useBlocksFromTimestamps(
   const [activeNetwork] = useActiveNetworkVersion()
   const [blocks, setBlocks] = useState<any>()
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { blockClient } = useClients()
   const activeBlockClient = blockClientOverride ?? blockClient
@@ -46,17 +47,20 @@ export function useBlocksFromTimestamps(
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true)
       const results = await splitQuery(GET_BLOCKS, activeBlockClient, [], timestamps)
       if (results) {
         setBlocks({ ...(blocks ?? {}), [activeNetwork.id]: results })
+        setLoading(false)
       } else {
+        setLoading(false)
         setError(true)
       }
     }
-    if (!networkBlocks && !error) {
+    if (!networkBlocks && !error && !loading) {
       fetchData()
     }
-  })
+  }, [networkBlocks, error])
 
   const blocksFormatted = useMemo(() => {
     if (blocks?.[activeNetwork.id]) {
@@ -100,6 +104,7 @@ export async function getBlocksFromTimestamps(
   if (timestamps?.length === 0) {
     return []
   }
+  debugger
   const fetchedData: any = await splitQuery(GET_BLOCKS, blockClient, [], timestamps, skipCount)
 
   const blocks: any[] = []

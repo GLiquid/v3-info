@@ -53,7 +53,7 @@ export async function fetchPoolChartData(address: string, client: ApolloClient<N
       fee: string
     }
   }[] = []
-  const startTimestamp = 1619170975
+  const startTimestamp = 1748785838
   const endTimestamp = dayjs.utc().unix()
 
   let error = false
@@ -62,7 +62,6 @@ export async function fetchPoolChartData(address: string, client: ApolloClient<N
 
   try {
     while (!allFound) {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
       const {
         data: chartResData,
         error,
