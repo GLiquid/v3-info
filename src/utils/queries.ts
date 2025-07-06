@@ -19,9 +19,9 @@ export async function splitQuery<Type extends object>(
   let fetchedData = {} as Type
   let allFound = false
   let skip = 0
+
   try {
     while (!allFound) {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
       let end = values.length
       if (skip + skipCount < values.length) {
         end = skip + skipCount
@@ -35,6 +35,7 @@ export async function splitQuery<Type extends object>(
         ...fetchedData,
         ...result.data,
       }
+
       if (Object.keys(result.data).length < skipCount || skip + skipCount > values.length) {
         allFound = true
       } else {

@@ -31,7 +31,9 @@ export function useTopTokenAddresses(): {
 
   const formattedData = useMemo(() => {
     if (data) {
-      return data.tokens.map((t) => t.id)
+      return data.tokens
+        .map((t) => t.id)
+        .filter((t) => t.toLocaleLowerCase() !== '0x9D90ba4E945FCC46F8941ddB9180f95A9d4D3053'.toLocaleLowerCase())
     } else {
       return undefined
     }
