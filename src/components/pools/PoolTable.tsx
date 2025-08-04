@@ -2,15 +2,13 @@ import React, { useCallback, useState, useMemo, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { TYPE } from 'theme'
-import { DarkGreyCard, GreyBadge } from 'components/Card'
+import { DarkGreyCard } from 'components/Card'
 import Loader, { LoadingRows } from 'components/Loader'
 import { AutoColumn } from 'components/Column'
 import { RowFixed } from 'components/Row'
 import { formatDollarAmount } from 'utils/numbers'
 import { PoolData } from 'state/pools/reducer'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
-import { feeTierPercent } from 'utils'
-
 import { Label, ClickableText } from 'components/Text'
 import { PageButtons, Arrow, Break } from 'components/shared'
 import { POOL_HIDE } from '../../constants/index'
@@ -79,9 +77,9 @@ const DataRow = ({ poolData, index }: { poolData: PoolData; index: number }) => 
             <TYPE.label ml="8px">
               {poolData.token0.symbol}/{poolData.token1.symbol}
             </TYPE.label>
-            <GreyBadge ml="10px" fontSize="14px">
+            {/* <GreyBadge ml="10px" fontSize="14px">
               {feeTierPercent(poolData.fee)}
-            </GreyBadge>
+            </GreyBadge> */}
           </RowFixed>
         </Label>
         <Label end={1} fontWeight={400}>

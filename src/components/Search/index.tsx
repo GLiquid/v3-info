@@ -8,8 +8,6 @@ import { AutoColumn } from 'components/Column'
 import CurrencyLogo from 'components/CurrencyLogo'
 import { formatDollarAmount } from 'utils/numbers'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
-import { GreyBadge } from 'components/Card'
-import { feeTierPercent } from 'utils'
 import { useSavedTokens, useSavedPools } from 'state/user/hooks'
 import { SavedIcon } from 'components/Button'
 import { useTokenDatas } from 'state/tokens/hooks'
@@ -358,7 +356,7 @@ const Search = ({ ...rest }: React.HTMLAttributes<HTMLDivElement>) => {
                         <TYPE.label ml="10px" style={{ whiteSpace: 'nowrap' }}>
                           <HoverInlineText maxCharacters={12} text={`${p.token0.symbol} / ${p.token1.symbol}`} />
                         </TYPE.label>
-                        <GreyBadge ml="10px">{feeTierPercent(p.fee)}</GreyBadge>
+                        {/* <GreyBadge ml="10px">{feeTierPercent(p.fee)}</GreyBadge> */}
                         <SavedIcon
                           id="watchlist-icon"
                           size={'16px'}
