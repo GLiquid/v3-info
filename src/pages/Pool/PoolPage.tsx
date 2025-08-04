@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useColor } from 'hooks/useColor'
 import { ThemedBackground, PageWrapper } from 'pages/styled'
-import { ExplorerDataType, feeTierPercent, getExplorerLink, isAddress } from 'utils'
+import { ExplorerDataType, getExplorerLink, isAddress } from 'utils'
 import { AutoColumn } from 'components/Column'
 import { RowBetween, RowFixed, AutoRow } from 'components/Row'
 import { TYPE, StyledInternalLink } from 'theme'
@@ -14,7 +14,7 @@ import CurrencyLogo from 'components/CurrencyLogo'
 import { formatDollarAmount, formatAmount } from 'utils/numbers'
 import Percent from 'components/Percent'
 import { ButtonPrimary, ButtonGray, SavedIcon } from 'components/Button'
-import { DarkGreyCard, GreyCard, GreyBadge } from 'components/Card'
+import { DarkGreyCard, GreyCard } from 'components/Card'
 import { usePoolDatas, usePoolChartData, usePoolTransactions } from 'state/pools/hooks'
 import { unixToDate } from 'utils/date'
 import { ToggleWrapper, ToggleElementFree } from 'components/Toggle/index'
@@ -161,9 +161,7 @@ function PoolPage({ address }: { address: string }) {
                   <TYPE.label>{` Pools `}</TYPE.label>
                 </StyledInternalLink>
                 <TYPE.main>{` > `}</TYPE.main>
-                <TYPE.label>{` ${poolData.token0.symbol} / ${poolData.token1.symbol} ${feeTierPercent(
-                  poolData.fee,
-                )} `}</TYPE.label>
+                <TYPE.label>{` ${poolData.token0.symbol} / ${poolData.token1.symbol} `}</TYPE.label>
               </AutoRow>
               <RowFixed gap="10px" align="center">
                 <SavedIcon fill={savedPools.includes(address)} onClick={() => addSavedPool(address)} />
@@ -181,7 +179,7 @@ function PoolPage({ address }: { address: string }) {
                     mr="8px"
                     fontSize="24px"
                   >{` ${poolData.token0.symbol} / ${poolData.token1.symbol} `}</TYPE.label>
-                  <GreyBadge>{feeTierPercent(poolData.fee)}</GreyBadge>
+                  {/* <GreyBadge>{feeTierPercent(poolData.fee)}</GreyBadge> */}
                   {activeNetwork === EthereumNetworkInfo ? null : (
                     <GenericImageWrapper src={activeNetwork.imageURL} style={{ marginLeft: '8px' }} size={'26px'} />
                   )}

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { ScrollableX, GreyCard, GreyBadge } from 'components/Card'
+import { ScrollableX, GreyCard } from 'components/Card'
 import Loader from 'components/Loader'
 import { AutoColumn } from 'components/Column'
 import { RowFixed } from 'components/Row'
@@ -11,7 +11,6 @@ import { useAllPoolData } from 'state/pools/hooks'
 import { PoolData } from 'state/pools/reducer'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
 import HoverInlineText from 'components/HoverInlineText'
-import { feeTierPercent } from 'utils'
 
 const Container = styled(StyledInternalLink)`
   min-width: 210px;
@@ -37,9 +36,9 @@ const DataCard = ({ poolData }: { poolData: PoolData }) => {
             <TYPE.label ml="8px">
               <HoverInlineText maxCharacters={10} text={`${poolData.token0.symbol}/${poolData.token1.symbol}`} />
             </TYPE.label>
-            <GreyBadge ml="10px" fontSize="12px">
+            {/* <GreyBadge ml="10px" fontSize="12px">
               {feeTierPercent(poolData.fee)}
-            </GreyBadge>
+            </GreyBadge> */}
           </RowFixed>
           <RowFixed>
             <TYPE.label mr="6px">{formatDollarAmount(poolData.volumeUSD)}</TYPE.label>
