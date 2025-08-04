@@ -28,7 +28,7 @@ export const TOKEN_HIDE: { [key: string]: string[] } = {
   [SupportedNetwork.BNB]: [],
   [SupportedNetwork.AVALANCHE]: [],
   [SupportedNetwork.BASE]: [],
-  [SupportedNetwork.HYPEREVM]: [],
+  [SupportedNetwork.HYPEREVM]: ['0x9ba2edc44e0a4632eb4723e81d4142353e1bb160'],
 }
 
 export const POOL_HIDE: { [key: string]: string[] } = {
@@ -48,7 +48,10 @@ export const POOL_HIDE: { [key: string]: string[] } = {
   [SupportedNetwork.BNB]: [],
   [SupportedNetwork.AVALANCHE]: [],
   [SupportedNetwork.BASE]: [],
-  [SupportedNetwork.HYPEREVM]: [],
+  [SupportedNetwork.HYPEREVM]: [
+    '0x133e5625d8369d682395b78969ac742d2a4d4918',
+    '0x78ff7b0fdade689f688abff8796cf36f7cb21ffd',
+  ],
 }
 
 export const START_BLOCKS: { [key: string]: number } = {
