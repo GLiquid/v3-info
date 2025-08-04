@@ -1,6 +1,6 @@
 {
   "name": "Hyperswap",
-  "logoURI": "https://raw.githubusercontent.com/HyperSwapX/media-kit/f8aeb4806dd18089a71b5b65bedaefc120e87a8b/PNG-SVG/Logo%20Black%20%2B%20Background%20Green.jpg",
+  "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/media-kit/f8aeb4806dd18089a71b5b65bedaefc120e87a8b/PNG-SVG/Logo%20Black%20%2B%20Background%20Green.jpg",
   "keywords": ["audited", "verified", "lending"],
   "tags": {
     "stablecoin": {
@@ -23,15 +23,6 @@
       "tags": ["tokenv1"]
     },
     {
-      "name": "Wrapped Hype",
-      "decimals": 18,
-      "symbol": "WHYPE",
-      "address": "0x5555555555555555555555555555555555555555",
-      "chainId": 999,
-      "logoURI": "https://assets.coingecko.com/coins/images/50882/standard/hyperliquid.jpg?1729431300",
-      "tags": ["tokenv1"]
-    },
-    {
       "name": "Hyperbeat Ultra Hype",
       "decimals": 18,
       "symbol": "hbHYPE",
@@ -41,39 +32,12 @@
       "tags": ["tokenv1"]
     },
     {
-      "name": "Hyper USD",
-      "decimals": 18,
-      "symbol": "USDHL",
-      "address": "0xb50A96253aBDF803D85efcDce07Ad8becBc52BD5",
-      "chainId": 999,
-      "logoURI": "https://assets.coingecko.com/coins/images/66679/standard/usdhl.jpg?1750242294",
-      "tags": ["tokenv1", "stablecoin"]
-    },
-    {
-      "name": "pre Gliquid",
-      "decimals": 18,
-      "symbol": "pGLQ",
-      "address": "0x9D90ba4E945FCC46F8941ddB9180f95A9d4D3053",
-      "chainId": 999,
-      "logoURI": "https://ivory-fierce-cat-639.mypinata.cloud/ipfs/bafkreigpfplaywsnfffj7k2cq73rxue34djth7mc7ol3gdaexymgc7vawe",
-      "tags": ["tokenv1"]
-    },
-    {
       "name": "Reverse Unit Bias",
       "decimals": 18,
       "symbol": "RUB",
       "address": "0x7DCfFCb06B40344eecED2d1Cbf096B299fE4b405",
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/rub.png",
-      "tags": ["tokenv1"]
-    },
-    {
-      "name": "HyperFly",
-      "decimals": 18,
-      "symbol": "FLY",
-      "address": "0x3f244819a8359145a8e7cf0272955e4918a50627",
-      "chainId": 999,
-      "logoURI": "https://app.hyperliquid.xyz/coins/FLY_USDC.svg",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/rub.png",
       "tags": ["tokenv1"]
     },
     {
@@ -172,16 +136,7 @@
       "symbol": "BUDDY",
       "address": "0x47bb061C0204Af921F43DC73C7D7768d2672DdEE",
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/buddy.png",
-      "tags": ["tokenv1"]
-    },
-    {
-      "name": "SUPERMILK",
-      "decimals": 6,
-      "symbol": "MILK",
-      "address": "0xFE69bc93B936B34D371defa873686C116C8488c2",
-      "chainId": 999,
-      "logoURI": "https://dd.dexscreener.com/ds-data/tokens/hyperevm/0xfe69bc93b936b34d371defa873686c116c8488c2.png?size=lg&key=076193",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/buddy.png",
       "tags": ["tokenv1"]
     },
     {
@@ -199,7 +154,7 @@
       "symbol": "USDXL",
       "address": "0xca79db4b49f608ef54a5cb813fbed3a6387bc645",
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/usdxl.svg",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/usdxl.svg",
       "tags": ["tokenv1"]
     },
     {
@@ -212,21 +167,12 @@
       "tags": ["tokenv1"]
     },
     {
-      "address": "0x04d02CB2E963B4490Ee02b1925223d04F9d83FC6",
-      "name": "CAT",
-      "symbol": "CAT",
-      "decimals": 18,
-      "chainId": 999,
-      "logoURI": "https://app.hyperliquid.xyz/coins/CAT_USDC.svg",
-      "tags": ["tokenv1"]
-    },
-    {
       "address": "0x5804Bf271D9e691611EEA1267B24C1f3D0723639",
       "name": "First AI investment DAO on Hyperliquid",
       "symbol": "HWTR",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/HWTR.png",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/HWTR.png",
       "tags": ["tokenv1"]
     },
     {
@@ -235,7 +181,7 @@
       "symbol": "LIQD",
       "address": "0x1Ecd15865D7F8019D546f76d095d9c93cc34eDFa",
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/LIQD.png",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/LIQD.png",
       "tags": ["tokenv1"]
     },
     {
@@ -253,25 +199,7 @@
       "symbol": "mHYPE",
       "address": "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/mHYPE.jpg",
-      "tags": ["tokenv1"]
-    },
-    {
-      "address": "0x6f7e96C0267CD22FE04346aF21f8c6ff54372939",
-      "name": "GENESY",
-      "symbol": "GENESY",
-      "decimals": 18,
-      "chainId": 999,
-      "logoURI": "https://app.hyperliquid.xyz/coins/GENESY_USDC.svg",
-      "tags": ["tokenv1"]
-    },
-    {
-      "name": "Omni X",
-      "decimals": 18,
-      "symbol": "OMNIX",
-      "address": "0x45eC8F63Fe934C0213476CFb5870835E61dd11FA",
-      "chainId": 999,
-      "logoURI": "https://app.hyperliquid.xyz/coins/OMNIX_USDC.svg",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/mHYPE.jpg",
       "tags": ["tokenv1"]
     },
     {
@@ -289,7 +217,7 @@
       "symbol": "USDe",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/USDe.jpg",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/USDe.jpg",
       "tags": ["tokenv1"]
     },
     {
@@ -298,16 +226,7 @@
       "symbol": "sUSDe",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/sUSDe.jpg",
-      "tags": ["tokenv1"]
-    },
-    {
-      "address": "0x7280CC1f369ab574c35cb8a8D0885e9486e3B733",
-      "name": "YEETI",
-      "symbol": "YEETI",
-      "decimals": 18,
-      "chainId": 999,
-      "logoURI": "https://app.hyperliquid.xyz/coins/YEETI_USDC.svg",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/sUSDe.jpg",
       "tags": ["tokenv1"]
     },
     {
@@ -316,7 +235,7 @@
       "symbol": "USD₮0",
       "decimals": 6,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/USDT0.png",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/USDT0.png",
       "tags": ["tokenv1"]
     },
     {
@@ -325,7 +244,7 @@
       "symbol": "LQSCAN",
       "decimals": 6,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/LQSCAN.png",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/LQSCAN.png",
       "tags": ["tokenv1"]
     },
     {
@@ -334,25 +253,7 @@
       "symbol": "PEG",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/PEG.png",
-      "tags": ["tokenv1"]
-    },
-    {
-      "address": "0x2c9634d152e8b584d4a153a78dba3e958db7b385",
-      "name": "The Chameleon",
-      "symbol": "CHAM",
-      "decimals": 6,
-      "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/CHAM.svg",
-      "tags": ["tokenv1"]
-    },
-    {
-      "address": "0x88E7606172f587366fc6EE662Fab89543c8B33ec",
-      "name": "Fish Token",
-      "symbol": "FISH",
-      "decimals": 18,
-      "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HarborFinanceHype/logo/refs/heads/main/fish.png",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/PEG.png",
       "tags": ["tokenv1"]
     },
     {
@@ -379,7 +280,7 @@
       "symbol": "cmETH",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/cmETH.png",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/cmETH.png",
       "tags": ["tokenv1"]
     },
     {
@@ -388,7 +289,7 @@
       "symbol": "UFART",
       "decimals": 6,
       "chainId": 999,
-      "logoURI": "https://raw.githubusercontent.com/HyperSwapX/hyperswap-token-list/refs/heads/main/assets/ufart.jpg",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/ufart.jpg",
       "tags": ["tokenv1"]
     },
     {
@@ -419,52 +320,187 @@
       "tags": ["tokenv1"]
     },
     {
-      "address": "0xFdC42f844f3aa19F8Fc0b2d67d3276cf1eFdC4CA",
-      "name": "Rat Race Combat: Skill, Gems, Crypto. 🐀💎",
-      "symbol": "RAT",
-      "decimals": 18,
-      "chainId": 999,
-      "logoURI": "https://app.hyperliquid.xyz/coins/RAT_USDC.svg",
-      "tags": ["tokenv1"]
-    },
-    {
       "address": "0x0a3d8466f5de586fa5f6de117301e2f90bcc5c48",
       "name": "Resolv Liquidity Provider Token",
       "symbol": "RLP",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://framerusercontent.com/assets/KbnTGRuywVYGcbJ0XHErNL5g.png",
+      "logoURI": "https://framerusercontent.com/images/C2dNNudbKRAM0nmqvo1SJmfkY3c.png",
       "tags": ["tokenv1"]
     },
     {
-      "address": "0x266a2491F782eb03b369760889ffF8785efb3e46",
-      "name": "TIME",
-      "symbol": "TIME",
+      "address": "0x2c9634d152e8b584d4a153a78dba3e958db7b385",
+      "name": "The Chameleon",
+      "symbol": "CHAM",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/CHAM.svg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xb50A96253aBDF803D85efcDce07Ad8becBc52BD5",
+      "name": "Hyper USD",
+      "symbol": "USDHL",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://pbs.twimg.com/profile_images/1928111403551911936/rkFUzZ4Z_400x400.jpg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0x9ab96A4668456896d45c301Bc3A15Cee76AA7B8D",
+      "name": "Relend Network USDC",
+      "symbol": "rUSDC",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://raw.githubusercontent.com/relend-network/RelendAssets/7f9ba4261515b615ddedd14e02c238b82d8be647/logos/rUSDC/relend.svg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xf4D9235269a96aaDaFc9aDAe454a0618eBE37949",
+      "name": "XAUt0",
+      "symbol": "XAUt0",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/XAUt0.svg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0x8ff0dd9f9c40a0d76ef1bcfaf5f98c1610c74bd8",
+      "name": "Hyperstable",
+      "symbol": "USH",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://img.notionusercontent.com/s3/prod-files-secure%2F684ee1b2-0712-4909-8625-4eaaf5bc4270%2F0670736e-69ef-4a1d-821a-8e46934638b7%2FToken.png/size/w=2000?exp=1748369572&sig=gwysBQ-5FGnZgWX7Vi5gMasrSa4tR73y_hhp9qyswTQ&id=e5412ea7-723e-4aef-83bb-69c435b32b0b&table=block",
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/USH.png",
       "tags": ["tokenv1"]
     },
     {
-      "address": "0x9c84D78839ADe4d3211a9b5fa73Ef079eca4f739",
-      "name": "WET",
-      "symbol": "WET",
+      "address": "0x5e105266db42f78FA814322Bce7f388B4C2e61eb",
+      "name": "Hyperbeat USDT",
+      "symbol": "hbUSDT",
       "decimals": 18,
       "chainId": 999,
-      "logoURI": "https://i.postimg.cc/J09BKpQn/logo-wet.png",
+      "logoURI": "https://i.imgur.com/zlh0Pj6_d.webp?maxwidth=760&fidelity=grand",
       "tags": ["tokenv1"]
     },
     {
-      "address": "0x704B679F26b8dABA1D5d1E59d56229a34bFeE56F",
-      "name": "HyperPixies",
-      "symbol": "PIXIES",
+      "address": "0x1359b05241ca5076c9f59605214f4f84114c0de8",
+      "name": "Wrapped HLP",
+      "symbol": "WHLP",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://framerusercontent.com/images/pVlpQ4mw0EUc3iGjnkW12VsA4QA.png",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xc061d38903b99aC12713B550C2CB44B221674F94",
+      "name": "Hyperbeat Ultra uBTC",
+      "symbol": "hbBTC",
       "decimals": 8,
       "chainId": 999,
-      "logoURI": "https://hyperpixies.art/logo_125x.png",
+      "logoURI": "https://app.hyperbeat.org/assets/images/vaults/hbBTC.svg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xB2589C360FbB7b3A6eE061359c5a9A2714D26006",
+      "name": "Hl Gato",
+      "symbol": "HLGATO",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://beige-immediate-octopus-505.mypinata.cloud/ipfs/bafkreido2ayyfjmfvpnbyetoke4fc6m4xxrqz7stag3ql44odfwccsn7ra",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xe513ea692202dBA4184ef4C00bA8A6eAC36C4907",
+      "name": "Liquid Synthetic Derivative ",
+      "symbol": "LSD888",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://raw.githubusercontent.com/tailchaser888/lsd888/refs/heads/main/exxxx.png",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0x5f2c04148D4a03A12fD97793189a5899acb06B6d",
+      "name": "Liquidog",
+      "symbol": "LDOG",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://raw.githubusercontent.com/Crypthaut/hyperswap-token-list/main/assets/ldog.png",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xfD739d4e423301CE9385c1fb8850539D657C296D",
+      "name": "Kinetiq Staked HYPE",
+      "symbol": "kHYPE",
+      "decimals": 18,
+      "chainId": 999,
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/khype.svg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0x27eC642013bcB3D80CA3706599D3cdA04F6f4452",
+      "name": "Unit Pump",
+      "symbol": "UPUMP",
+      "decimals": 6,
+      "chainId": 999,
+      "logoURI": "https://app.hyperliquid.xyz/coins/PUMP_USDC.svg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xFde5B0626fC80E36885e2fA9cD5ad9d7768D725c",
+      "name": "haHYPE",
+      "symbol": "haHYPE",
+      "decimals": 18,
+      "chainId": 999,
+      "logoURI": "https://i.ibb.co/JwfBJBcg/Logo-125x125.png",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0x81e064d0eB539de7c3170EDF38C1A42CBd752A76",
+      "name": "Hyperbeat LST Vault",
+      "symbol": "lstHYPE",
+      "decimals": 18,
+      "chainId": 999,
+      "logoURI": "https://raw.githubusercontent.com/HyperSwap-Labs/hyperswap-token-list/refs/heads/main/assets/lstHYPE.svg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xe7eAA46C2Ac8470D622aDa1538feDE6242CebE53",
+      "name": "Latina",
+      "symbol": "LATINA",
+      "decimals": 18,
+      "chainId": 999,
+      "logoURI": "https://dd.dexscreener.com/ds-data/tokens/hyperevm/0xe7eaa46c2ac8470d622ada1538fede6242cebe53.png?key=d16030",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0xB5EE887259F792E613edBD20dDE8970C10fefda1",
+      "name": "ValiDAO",
+      "symbol": "VDO",
+      "decimals": 18,
+      "chainId": 999,
+      "logoURI": "https://i.ibb.co/pvQS1NtW/Ticker-Logo-Dexscreener-500x500-1.jpg",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0x3FA145caD2C8108A68cfc803A8e1aE246C36dF3e",
+      "name": "HyperStrategy",
+      "symbol": "HSTR",
+      "decimals": 18,
+      "chainId": 999,
+      "logoURI": "https://dd.dexscreener.com/ds-data/tokens/hyperevm/0x3fa145cad2c8108a68cfc803a8e1ae246c36df3e.png?key=22938e",
+      "tags": ["tokenv1"]
+    },
+    {
+      "address": "0x441794d6a8f9a3739f5d4e98a728937b33489d29",
+      "name": "Liquid HYPE Yield",
+      "symbol": "liquidHYPE",
+      "decimals": 18,
+      "chainId": 999,
+      "logoURI": "https://ivory-fierce-cat-639.mypinata.cloud/ipfs/bafkreidgpcgfacuxno2qkwd45mfylm4pogomqz6qv3f2chtvaw2yhxefcm",
       "tags": ["tokenv1"]
     }
   ],
-  "timestamp": "2025-05-29T10:18:41.308Z",
+  "timestamp": "2025-07-26T09:58:04.624Z",
   "version": {
     "major": 1,
     "minor": 3,
