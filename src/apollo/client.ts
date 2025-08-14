@@ -1,4 +1,5 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloLink, HttpLink } from '@apollo/client'
+import { RetryLink } from '@apollo/client/link/retry'
 
 export const healthClient = new ApolloClient({
   uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/analytics/1.2.3/gn',
@@ -48,9 +49,87 @@ export const healthClient = new ApolloClient({
 //   },
 // })
 
-export const client = new ApolloClient({
-  uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/analytics/1.2.3/gn',
+// Simple, dependency-free rate-limited fetch for GraphQL calls
+function createRateLimitedFetch(options: {
+  maxConcurrency: number
+  maxRequestsPerInterval: number
+  intervalMs: number
+}) {
+  const { maxConcurrency, maxRequestsPerInterval, intervalMs } = options
+  type FetchType = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>
+  type QueueItem = { args: Parameters<FetchType>; resolve: (v: Response) => void; reject: (e: unknown) => void }
 
+  const queue: QueueItem[] = []
+  let activeCount = 0
+  let tokens = maxRequestsPerInterval
+
+  const refill = () => {
+    tokens = maxRequestsPerInterval
+    pump()
+  }
+
+  const timer = setInterval(refill, intervalMs)
+  // Prevent leaking timers on HMR
+  if (typeof window !== 'undefined') {
+    window.addEventListener('beforeunload', () => clearInterval(timer))
+  }
+
+  const pump = () => {
+    if (activeCount >= maxConcurrency) return
+    while (queue.length > 0 && tokens > 0 && activeCount < maxConcurrency) {
+      const { args, resolve, reject } = queue.shift() as QueueItem
+      tokens -= 1
+      activeCount += 1
+      fetch(...args)
+        .then(resolve)
+        .catch(reject)
+        .finally(() => {
+          activeCount -= 1
+          pump()
+        })
+    }
+  }
+
+  const rateLimited: FetchType = (...args) =>
+    new Promise<Response>((resolve, reject) => {
+      queue.push({ args, resolve, reject })
+      pump()
+    })
+
+  return rateLimited
+}
+
+const rateLimitedFetch = createRateLimitedFetch({
+  maxConcurrency: 3,
+  maxRequestsPerInterval: 50,
+  intervalMs: 500,
+})
+
+const analyticsRetryLink = new RetryLink({
+  attempts: (count, _operation, error) => {
+    const statusCode = (error as any)?.statusCode || (error as any)?.networkError?.statusCode
+    if (!error) return false
+    if (statusCode === 429) return count <= 5
+    if (statusCode && statusCode >= 500) return count <= 3
+    return false
+  },
+  delay: (count, _operation, error) => {
+    const statusCode = (error as any)?.statusCode || (error as any)?.networkError?.statusCode
+    if (statusCode === 429) return Math.min(250 * 2 ** (count - 1), 4000)
+    return Math.min(200 * 2 ** (count - 1), 2000)
+  },
+})
+
+const analyticsLink = ApolloLink.from([
+  analyticsRetryLink,
+  new HttpLink({
+    uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/analytics/1.2.3/gn',
+    fetch: rateLimitedFetch,
+  }),
+])
+
+export const client = new ApolloClient({
+  link: analyticsLink,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -78,7 +157,26 @@ export const client = new ApolloClient({
 })
 
 export const blockClient = new ApolloClient({
-  uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/blocks/v1.0.0/gn',
+  link: ApolloLink.from([
+    new RetryLink({
+      attempts: (count, _operation, error) => {
+        const statusCode = (error as any)?.statusCode || (error as any)?.networkError?.statusCode
+        if (!error) return false
+        if (statusCode === 429) return count <= 5
+        if (statusCode && statusCode >= 500) return count <= 3
+        return false
+      },
+      delay: (count, _operation, error) => {
+        const statusCode = (error as any)?.statusCode || (error as any)?.networkError?.statusCode
+        if (statusCode === 429) return Math.min(250 * 2 ** (count - 1), 4000)
+        return Math.min(200 * 2 ** (count - 1), 2000)
+      },
+    }),
+    new HttpLink({
+      uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/blocks/v1.0.0/gn',
+      fetch: rateLimitedFetch,
+    }),
+  ]),
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
