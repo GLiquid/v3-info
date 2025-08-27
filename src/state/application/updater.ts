@@ -11,10 +11,10 @@ export default function Updater(): null {
 
   useEffect(() => {
     if (status.available === null && available !== null) {
-      updateStatus(available, syncedBlock, headBlock)
+      updateStatus(true, syncedBlock, headBlock)
     }
     if (!status.syncedBlock || (status.syncedBlock !== newSyncedBlock && syncedBlock)) {
-      updateStatus(status.available, newSyncedBlock, headBlock)
+      updateStatus(true, newSyncedBlock, headBlock)
     }
   }, [available, headBlock, newSyncedBlock, status.available, status.syncedBlock, syncedBlock, updateStatus])
 
