@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, ApolloLink, HttpLink } from '@apollo/clien
 import { RetryLink } from '@apollo/client/link/retry'
 
 export const healthClient = new ApolloClient({
-  uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/analytics/1.2.3/gn',
+  uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/analytics/1.3.0/gn',
   cache: new InMemoryCache(),
 })
 
@@ -123,7 +123,7 @@ const analyticsRetryLink = new RetryLink({
 const analyticsLink = ApolloLink.from([
   analyticsRetryLink,
   new HttpLink({
-    uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/analytics/1.2.3/gn',
+    uri: 'https://api.goldsky.com/api/public/project_cmb20ryy424yb01wy7zwd7xd1/subgraphs/analytics/1.3.0/gn',
     fetch: rateLimitedFetch,
   }),
 ])
